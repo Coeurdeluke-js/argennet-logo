@@ -17,9 +17,10 @@ export default {
         sans: ['Roboto', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
       },
+      aspectRatio: {
+        '1': '1 / 1',
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [],
 } 
