@@ -1,0 +1,1114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-dark: #1e293b;
+    --color-light: #f8fafc;
+    --color-grey: #64748b;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border border-primary hover:bg-primary/5;
+  }
+
+  .btn-ghost {
+    @apply text-gray-600 hover:text-primary hover:bg-gray-100;
+  }
+
+  .btn-outline {
+    @apply border-2 border-white text-white hover:bg-white hover:text-dark;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary transition-colors;
+  }
+
+  .nav-link {
+    @apply relative text-gray-600 hover:text-primary py-2 transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 0.6s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Transiciones suaves */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Efectos hover */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Sombras */
+.shadow-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos para el carrito */
+.cart-item {
+  @apply bg-white rounded-lg shadow-sm p-4 mb-4 transition-all duration-300 hover:shadow-md;
+}
+
+.cart-total {
+  @apply sticky bottom-0 bg-white border-t p-4 shadow-lg;
+}
+
+/* Estilos para el formulario de contacto */
+.contact-form {
+  @apply max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8;
+}
+
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-input {
+  @apply input;
+}
+
+.form-textarea {
+  @apply input h-32 resize-none;
+}
+
+/* Estilos para la página de productos */
+.product-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.product-card {
+  @apply card hover-scale;
+}
+
+.product-image {
+  @apply w-full overflow-hidden rounded-lg bg-gray-200;
+  aspect-ratio: 1 / 1;
+}
+
+.product-info {
+  @apply mt-4 space-y-2;
+}
+
+.product-title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.product-price {
+  @apply text-xl font-bold text-primary;
+}
+
+/* Estilos para la página de servicios */
+.service-card {
+  @apply card hover-scale p-8 text-center;
+}
+
+.service-icon {
+  @apply w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4;
+}
+
+/* Estilos para la página de categorías */
+.category-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.category-card {
+  @apply card hover-scale relative overflow-hidden;
+}
+
+.category-image {
+  @apply aspect-w-16 aspect-h-9 w-full object-cover;
+}
+
+.category-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex items-end p-6;
+}
+
+.category-title {
+  @apply text-xl font-bold text-white;
+}
+
+/* Estilos para la página de pedidos */
+.order-card {
+  @apply card mb-6;
+}
+
+.order-header {
+  @apply flex justify-between items-center mb-4 pb-4 border-b;
+}
+
+.order-items {
+  @apply space-y-4;
+}
+
+.order-item {
+  @apply flex items-center gap-4;
+}
+
+.order-total {
+  @apply text-right mt-4 pt-4 border-t;
+}
+
+/* Estilos para la página de checkout */
+.checkout-steps {
+  @apply flex justify-between mb-8;
+}
+
+.step {
+  @apply flex items-center;
+}
+
+.step-number {
+  @apply w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-2;
+}
+
+.step-title {
+  @apply text-sm font-medium;
+}
+
+.step-active {
+  @apply text-primary;
+}
+
+.step-completed {
+  @apply text-gray-400;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-gallery {
+  @apply grid grid-cols-4 gap-4 mb-8;
+}
+
+.gallery-main {
+  @apply col-span-4 aspect-w-16 aspect-h-9 rounded-lg overflow-hidden;
+}
+
+.gallery-thumb {
+  @apply aspect-w-1 aspect-h-1 rounded-lg overflow-hidden cursor-pointer;
+}
+
+.product-details {
+  @apply space-y-6;
+}
+
+.product-specs {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.spec-item {
+  @apply flex flex-col;
+}
+
+.spec-label {
+  @apply text-sm text-gray-500;
+}
+
+.spec-value {
+  @apply font-medium;
+}
+
+/* Estilos para la página de contacto */
+.contact-info {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.info-card {
+  @apply card p-6;
+}
+
+.info-icon {
+  @apply w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4;
+}
+
+.info-title {
+  @apply text-lg font-semibold mb-2;
+}
+
+.info-text {
+  @apply text-gray-600;
+}
+
+/* Estilos para la página de servicios */
+.service-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.service-features {
+  @apply mt-6 space-y-4;
+}
+
+.feature-item {
+  @apply flex items-center gap-3;
+}
+
+.feature-icon {
+  @apply w-5 h-5 text-primary;
+}
+
+/* Estilos para la página de categorías */
+.category-header {
+  @apply mb-8 text-center;
+}
+
+.category-description {
+  @apply text-gray-600 max-w-2xl mx-auto;
+}
+
+/* Estilos para la página de pedidos */
+.order-status {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-processing {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.status-shipped {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-delivered {
+  @apply bg-gray-100 text-gray-800;
+}
+
+/* Estilos para la página de checkout */
+.payment-methods {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 mb-6;
+}
+
+.payment-method {
+  @apply flex items-center gap-3 p-4 border rounded-lg cursor-pointer hover:border-primary transition-colors;
+}
+
+.payment-method.selected {
+  @apply border-primary bg-primary/5;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-actions {
+  @apply flex items-center gap-4 mt-6;
+}
+
+.quantity-control {
+  @apply flex items-center border rounded-lg;
+}
+
+.quantity-button {
+  @apply px-3 py-1 hover:bg-gray-100 transition-colors;
+}
+
+.quantity-input {
+  @apply w-12 text-center border-x;
+}
+
+/* Estilos para la página de contacto */
+.contact-map {
+  @apply h-96 rounded-lg overflow-hidden mb-8;
+}
+
+.contact-form-success {
+  @apply text-center py-8;
+}
+
+.success-icon {
+  @apply w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4;
+}
+
+/* Estilos para la página de servicios */
+.service-pricing {
+  @apply mt-8;
+}
+
+.pricing-table {
+  @apply w-full border-collapse;
+}
+
+.pricing-header {
+  @apply bg-primary text-white p-4;
+}
+
+.pricing-row {
+  @apply border-b;
+}
+
+.pricing-cell {
+  @apply p-4;
+}
+
+/* Estilos para la página de categorías */
+.category-filters {
+  @apply mb-8;
+}
+
+.filter-group {
+  @apply mb-4;
+}
+
+.filter-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.filter-options {
+  @apply space-y-2;
+}
+
+.filter-option {
+  @apply flex items-center gap-2;
+}
+
+/* Estilos para la página de pedidos */
+.order-timeline {
+  @apply relative pl-8 pb-8;
+}
+
+.timeline-item {
+  @apply relative mb-4;
+}
+
+.timeline-dot {
+  @apply absolute left-0 top-0 w-4 h-4 rounded-full bg-primary;
+}
+
+.timeline-content {
+  @apply ml-4;
+}
+
+.timeline-date {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de checkout */
+.shipping-options {
+  @apply space-y-4 mb-6;
+}
+
+.shipping-option {
+  @apply flex items-center gap-3 p-4 border rounded-lg cursor-pointer hover:border-primary transition-colors;
+}
+
+.shipping-option.selected {
+  @apply border-primary bg-primary/5;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-reviews {
+  @apply mt-12;
+}
+
+.review-card {
+  @apply bg-white rounded-lg shadow-sm p-6 mb-4;
+}
+
+.review-header {
+  @apply flex justify-between items-center mb-4;
+}
+
+.review-author {
+  @apply font-medium;
+}
+
+.review-date {
+  @apply text-sm text-gray-500;
+}
+
+.review-rating {
+  @apply flex items-center gap-1 text-yellow-400;
+}
+
+/* Estilos para la página de contacto */
+.contact-hours {
+  @apply mt-8;
+}
+
+.hours-table {
+  @apply w-full;
+}
+
+.hours-row {
+  @apply flex justify-between py-2 border-b;
+}
+
+.hours-day {
+  @apply font-medium;
+}
+
+.hours-time {
+  @apply text-gray-600;
+}
+
+/* Estilos para la página de servicios */
+.service-faq {
+  @apply mt-12;
+}
+
+.faq-item {
+  @apply mb-4;
+}
+
+.faq-question {
+  @apply font-medium mb-2;
+}
+
+.faq-answer {
+  @apply text-gray-600;
+}
+
+/* Estilos para la página de categorías */
+.category-sort {
+  @apply flex items-center gap-4 mb-8;
+}
+
+.sort-label {
+  @apply text-sm font-medium text-gray-700;
+}
+
+.sort-select {
+  @apply input py-1;
+}
+
+/* Estilos para la página de pedidos */
+.order-actions {
+  @apply flex items-center gap-4 mt-6;
+}
+
+.action-button {
+  @apply btn;
+}
+
+/* Estilos para la página de checkout */
+.checkout-summary {
+  @apply bg-gray-50 rounded-lg p-6 mb-8;
+}
+
+.summary-row {
+  @apply flex justify-between py-2;
+}
+
+.summary-total {
+  @apply text-xl font-bold text-primary mt-4 pt-4 border-t;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-related {
+  @apply mt-12;
+}
+
+.related-title {
+  @apply text-2xl font-bold mb-6;
+}
+
+.related-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Estilos para la página de contacto */
+.contact-social {
+  @apply flex items-center gap-4 mt-8;
+}
+
+.social-link {
+  @apply w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors;
+}
+
+/* Estilos para la página de servicios */
+.service-testimonials {
+  @apply mt-12;
+}
+
+.testimonial-card {
+  @apply bg-white rounded-lg shadow-sm p-6 mb-4;
+}
+
+.testimonial-content {
+  @apply text-gray-600 italic mb-4;
+}
+
+.testimonial-author {
+  @apply font-medium;
+}
+
+/* Estilos para la página de categorías */
+.category-breadcrumb {
+  @apply flex items-center gap-2 text-sm text-gray-500 mb-8;
+}
+
+.breadcrumb-item {
+  @apply hover:text-primary transition-colors;
+}
+
+.breadcrumb-separator {
+  @apply text-gray-400;
+}
+
+/* Estilos para la página de pedidos */
+.order-details {
+  @apply bg-white rounded-lg shadow-sm p-6 mb-6;
+}
+
+.details-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.detail-item {
+  @apply flex flex-col;
+}
+
+.detail-label {
+  @apply text-sm text-gray-500;
+}
+
+.detail-value {
+  @apply font-medium;
+}
+
+/* Estilos para la página de checkout */
+.checkout-form {
+  @apply max-w-2xl mx-auto;
+}
+
+.form-section {
+  @apply mb-8;
+}
+
+.section-title {
+  @apply text-xl font-bold mb-4;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-meta {
+  @apply flex items-center gap-4 text-sm text-gray-500 mb-6;
+}
+
+.meta-item {
+  @apply flex items-center gap-1;
+}
+
+/* Estilos para la página de contacto */
+.contact-header {
+  @apply text-center mb-12;
+}
+
+.contact-title {
+  @apply text-4xl font-bold mb-4;
+}
+
+.contact-subtitle {
+  @apply text-xl text-gray-600;
+}
+
+/* Estilos para la página de servicios */
+.service-header {
+  @apply text-center mb-12;
+}
+
+.service-title {
+  @apply text-4xl font-bold mb-4;
+}
+
+.service-subtitle {
+  @apply text-xl text-gray-600;
+}
+
+/* Estilos para la página de categorías */
+.category-title {
+  @apply text-4xl font-bold mb-4;
+}
+
+.category-subtitle {
+  @apply text-xl text-gray-600 mb-8;
+}
+
+/* Estilos para la página de pedidos */
+.order-title {
+  @apply text-3xl font-bold mb-8;
+}
+
+/* Estilos para la página de checkout */
+.checkout-title {
+  @apply text-3xl font-bold mb-8;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-title {
+  @apply text-3xl font-bold mb-4;
+}
+
+.product-subtitle {
+  @apply text-xl text-gray-600 mb-6;
+}
+
+/* Estilos para la página de contacto */
+.contact-section {
+  @apply py-12;
+}
+
+.contact-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de servicios */
+.service-section {
+  @apply py-12;
+}
+
+.service-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de categorías */
+.category-section {
+  @apply py-12;
+}
+
+.category-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de pedidos */
+.order-section {
+  @apply py-12;
+}
+
+.order-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de checkout */
+.checkout-section {
+  @apply py-12;
+}
+
+.checkout-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-section {
+  @apply py-12;
+}
+
+.product-container {
+  @apply container mx-auto px-4;
+}
+
+/* Estilos para la página de contacto */
+.contact-footer {
+  @apply mt-12 text-center;
+}
+
+.contact-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de servicios */
+.service-footer {
+  @apply mt-12 text-center;
+}
+
+.service-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de categorías */
+.category-footer {
+  @apply mt-12 text-center;
+}
+
+.category-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de pedidos */
+.order-footer {
+  @apply mt-12 text-center;
+}
+
+.order-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de checkout */
+.checkout-footer {
+  @apply mt-12 text-center;
+}
+
+.checkout-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Estilos para la página de detalle de producto */
+.product-footer {
+  @apply mt-12 text-center;
+}
+
+.product-note {
+  @apply text-sm text-gray-500;
+}
+
+/* Contact Page Styles */
+.contact-section {
+  @apply py-12 px-4;
+}
+
+.contact-container {
+  @apply max-w-7xl mx-auto;
+}
+
+.contact-header {
+  @apply text-center mb-12;
+}
+
+.contact-title {
+  @apply text-4xl font-bold text-gray-900 mb-4;
+}
+
+.contact-subtitle {
+  @apply text-xl text-gray-600 max-w-2xl mx-auto;
+}
+
+.contact-info {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-12;
+}
+
+.info-card {
+  @apply bg-white rounded-lg shadow-md p-8;
+}
+
+.info-icon {
+  @apply w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center;
+}
+
+.info-title {
+  @apply font-bold text-gray-900 mb-1;
+}
+
+.info-text {
+  @apply text-gray-600;
+}
+
+.contact-form {
+  @apply bg-white rounded-lg shadow-md p-8;
+}
+
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none;
+}
+
+.contact-form-success {
+  @apply text-center py-8;
+}
+
+.success-icon {
+  @apply w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4;
+}
+
+.contact-footer {
+  @apply mt-8 text-center text-sm text-gray-500;
+}
+
+.contact-note {
+  @apply italic;
+}
+
+/* Button Styles */
+.btn {
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+}
+
+.btn-ghost {
+  @apply text-primary hover:bg-primary/10;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+}
+
+/* Input Styles */
+.input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors;
+}
+
+/* Navigation Link Styles */
+.nav-link {
+  @apply text-gray-600 hover:text-primary transition-colors;
+}
+
+.nav-link-active {
+  @apply text-primary font-medium;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Transition Properties */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Cart Item Styles */
+.cart-item {
+  @apply flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm;
+}
+
+.cart-item-image {
+  @apply w-20 h-20 object-cover rounded-md;
+}
+
+.cart-item-details {
+  @apply flex-1;
+}
+
+.cart-item-title {
+  @apply font-medium text-gray-900;
+}
+
+.cart-item-price {
+  @apply text-primary font-medium;
+}
+
+.cart-item-quantity {
+  @apply flex items-center gap-2;
+}
+
+/* Product Grid Styles */
+.product-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.product-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200;
+}
+
+.product-image {
+  @apply w-full h-48 object-cover;
+}
+
+.product-details {
+  @apply p-4;
+}
+
+.product-title {
+  @apply font-medium text-gray-900 mb-2;
+}
+
+.product-price {
+  @apply text-primary font-medium text-lg;
+}
+
+/* Service Card Styles */
+.service-card {
+  @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+}
+
+.service-icon {
+  @apply w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4;
+}
+
+.service-title {
+  @apply font-medium text-gray-900 mb-2;
+}
+
+.service-description {
+  @apply text-gray-600;
+}
+
+/* Order Styles */
+.order-card {
+  @apply bg-white rounded-lg shadow-md p-6 mb-4;
+}
+
+.order-header {
+  @apply flex justify-between items-center mb-4;
+}
+
+.order-number {
+  @apply font-medium text-gray-900;
+}
+
+.order-date {
+  @apply text-gray-500;
+}
+
+.order-status {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.order-status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.order-status-completed {
+  @apply bg-green-100 text-green-800;
+}
+
+.order-status-cancelled {
+  @apply bg-red-100 text-red-800;
+}
+
+.order-items {
+  @apply space-y-4;
+}
+
+.order-item {
+  @apply flex items-center gap-4;
+}
+
+.order-item-image {
+  @apply w-16 h-16 object-cover rounded-md;
+}
+
+.order-item-details {
+  @apply flex-1;
+}
+
+.order-item-title {
+  @apply font-medium text-gray-900;
+}
+
+.order-item-price {
+  @apply text-primary font-medium;
+}
+
+.order-total {
+  @apply mt-4 pt-4 border-t border-gray-200 flex justify-between items-center;
+}
+
+.order-total-label {
+  @apply font-medium text-gray-900;
+}
+
+.order-total-amount {
+  @apply text-xl font-bold text-primary;
+}
