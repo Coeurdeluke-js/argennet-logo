@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaTools, FaLaptop, FaDesktop, FaCog, FaRocket, FaShieldAlt, FaServer, FaWrench } from 'react-icons/fa';
+import { FaTools, FaLaptop, FaDesktop, FaCog, FaRocket, FaShieldAlt, FaServer, FaWrench, FaExclamationTriangle, FaCalendarAlt } from 'react-icons/fa';
 
 interface Service {
   id: string;
@@ -128,6 +128,8 @@ const services: Service[] = [
 
 function Services() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [showEmergencyModal, setShowEmergencyModal] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -180,12 +182,20 @@ function Services() {
             Contamos con técnicos disponibles para asistencia inmediata.
             También ofrecemos servicios de emergencia 24/7 para casos críticos.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn btn-primary">
-              Solicitar Servicio Urgente
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-6">
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowEmergencyModal(true)}
+            >
+              <FaExclamationTriangle className="mr-2" />
+              Servicio de Emergencia
             </button>
-            <button className="btn btn-secondary">
-              Agendar Visita Técnica
+            <button
+              className="btn btn-outline"
+              onClick={() => setShowRequestModal(true)}
+            >
+              <FaCalendarAlt className="mr-2" />
+              Solicitar Servicio Regular
             </button>
           </div>
         </div>

@@ -194,7 +194,12 @@ html {
 }
 
 .category-image {
-  @apply aspect-w-16 aspect-h-9 w-full object-cover;
+  @apply relative w-full;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.category-image > * {
+  @apply absolute inset-0 w-full h-full object-cover;
 }
 
 .category-overlay {

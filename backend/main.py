@@ -11,6 +11,12 @@ from app.routers import users, products, categories, cart, orders
 # Cargar variables de entorno
 load_dotenv()
 
+# Obtener variables de entorno
+PORT = int(os.getenv("PORT", 8000))
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./argennet.db")
+SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-for-development-change-in-production")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
+
 # Crear la aplicación FastAPI
 app = FastAPI(
     title="ArgenNet API",
@@ -41,4 +47,4 @@ app.include_router(orders.router, prefix="/api/orders", tags=["orders"])
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True) 
+    uvicorn.run("main:app", host="0.0.0.0", port=PORT, reload=True) 
